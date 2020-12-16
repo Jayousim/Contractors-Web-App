@@ -6,20 +6,22 @@
     <title>AQJ Homepage</title>
     <link rel="stylesheet" type="text/css" href="css/index.css" />
 </head>
-<body> 
+<body>  
     {% include 'header.html' %} 
     <section id="main_section">
-        <article>
-            <a href = "/employees"> Add Employee </a>
-        </article>
-        <article>
-            <a href = "/projects"> show projects</a>
-        </article>
-        <article>
-            <a href = "/employees/set"> set employee to project</a>
-        </article>
+    <article>
+        <a href = "/employees/add"> Add Employee </a>
+    </article>
+    <article>
+        <a href = "/employees"> Show Employees </a>
+    </article>
+    <article>
+        <a href = "/projects"> show projects</a>
+    </article>
+    <article>
+        <a href = "/employees/set"> set employee to project</a>
+    </article>
     </section>
-    
     {% include 'footer.html' %}
 </body>
 </html>
