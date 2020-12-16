@@ -7,10 +7,8 @@
     <link rel="stylesheet" type="text/css" href="css/remove_employee.css" />
 </head>
 <body>
-    <header>
-        <h1> Add New Employee </h1>
-    </header>
-    <section> 
+    {% include 'header.html' %}
+    <section id="main_section"> 
         <div>
             <h3> Employee Details </h3>
             <form action="/employees" method="POST" >
