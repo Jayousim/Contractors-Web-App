@@ -5,8 +5,6 @@
 
 USE constractors_union;
 
-
-
 CREATE TABLE constractor(
     id INT NOT NULL PRIMARY KEY,
     name VARCHAR(64)
