@@ -38,11 +38,13 @@ def render_add_employees():
 
 @app.route('/employees/set', methods = ['GET'])
 def render_set_employees():
-    return render_template('set_employee.html')
+    return render_template('scheduling.html')
 
 @app.route('/projects', methods = ['GET'])
 def render_my_projects():
     return render_template('my_projects.html')
+
+
 
 if __name__ == "__main__":
     app.run( port = 3000 )
