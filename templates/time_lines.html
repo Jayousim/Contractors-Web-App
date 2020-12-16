@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time Lines</title>
-    <link rel="stylesheet" type="text/css" href="css/my_employees.css" />
+    <link rel="stylesheet" type="text/css" href="css/time_line.css" />
 </head>
 <body>
-    <header>
-
-    </header>
+    {% include 'header.html' %}
     <nav>
         <a href="/">Home</a>
     </nav>
@@ -31,8 +29,6 @@
             {%endfor%}
         </table>
     </section>
-    <footer>
-        <h4> Contractors Union </h4>
-    </footer>
+    {% include 'footer.html' %}
 </body>
 </html>
