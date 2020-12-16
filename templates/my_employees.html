@@ -16,19 +16,24 @@
     <section>
         <table>
             <tr>
-                <th> C01 </th>
-                <th> C02 </th>
-                <th> C03 </th>
-                <th> C04 </th>
+                <th> id </th>
+                <th> name </th>
+                <th> phone_number </th>
+                <th> job </th>
+                <th> status </th>
             </tr>
             {%for employee in employees%}
                 <tr>
                     {%for attribute in employee%}
                         <td>{{attribute}}</td>
                     {%endfor%}
+                    <td> <a href="/remove_employee" > Remove </a> </td>
                 </tr>
             {%endfor%}
         </table>
     </section>
+    <footer>
+        <h4> Contractors Union </h4>
+    </footer>
 </body>
 </html>
