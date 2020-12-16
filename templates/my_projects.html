@@ -5,24 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> My Projects </title>
     <link rel="stylesheet" type="text/css" href="css/my_projects.css" />
+    <link rel="stylesheet" type="text/css" href="css/table_style.css" />
 </head>
 <body>    
-    <table> 
-        <tr>
-            <th>Project</th>
-            <th>Employees</th>
-            <th>progress</th>
-        </tr>
-        {%for project in projects%}
+    <table class="content-table"> 
+        <thead>
+            <tr>
+                <th>Project</th>
+                <th>Employees</th>
+                <th>progress</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for project in projects%}
             <tr>
                 <td>{{employees.get(project.get('id'))}}</td>
                 {%for cell in project%}
                     <td>{{project.get(cell)}}</td>
                 {%endfor%} 
                 <td> <a href="/schedule/{{ project.get('id') }}"> Add employee to project </a> </td>
-            </tr> 
-           
-        {%endfor%}
+            </tr>
+            {%endfor%}
+        </tbody>
     </table>
     {% include 'footer.html' %}
 </body>

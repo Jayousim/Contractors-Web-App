@@ -9,6 +9,7 @@ RESPONSE_CREATED = 201
 RESPONSE_DELETED = 204
 RESPONSE_SERVER_ERROR = 500
 
+
 app = Flask(__name__, static_url_path='', 
               static_folder='static', 
               template_folder='templates'
