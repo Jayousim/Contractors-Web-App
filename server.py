@@ -36,6 +36,11 @@ def add_employees_form():
 @app.route('/employees', methods = ['GET'])
 def render_employees():
     employees = employee_api.get_all_employees()
+    for elem in employees:
+        if "constructor_id" in elem.keys():
+            del elem['constructor_id']
+        if "project_id" in elem.keys():
+            del elem['project_id']
     return render_template('my_employees.html', employees=employees)
 
 @app.route('/employees/set', methods = ['GET'])
