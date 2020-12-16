@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Lines</title>
+    <link rel="stylesheet" type="text/css" href="css/my_employees.css" />
+</head>
+<body>
+    <header>
+
+    </header>
+    <nav>
+        <a href="/">Home</a>
+    </nav>
+    <section>
+        <table>
+            <tr>
+                <th> id </th>
+                <th> name </th>
+                <th> start_date </th>
+                <th> end_date </th>
+            </tr>
+            {%for time_line in time_lines%}
+                <tr>
+                    {%for attribute in time_line.values()%}
+                        <td>{{attribute}}</td>
+                    {%endfor%}
+                    
+                </tr>
+            {%endfor%}
+        </table>
+    </section>
+    <footer>
+        <h4> Contractors Union </h4>
+    </footer>
+</body>
+</html>
