@@ -24,14 +24,24 @@ def home():
 
 @app.route('/employees', methods = ['POST'])
 def add_employees_form():
-    details = request.get_json()
+    id = request.form['employee_id']
+    name = request.form['employee_name']
+    phone = request.form['employee_phone']
+    position = request.form['employee_position']
     try:
-        #db_api.add_employee(details)
-        payload = {"text": f"{details.get('employee_name')} added"}
+        employee_api.add_new_employee(id, name, phone, position)
+        payload = {"text": f"{name} added"}
         response = Response(json.dumps(payload))
     except:
-        respone = Response(json.dumps({"error": "employee add failed --##add details##--"}), RESPONSE_SERVER_ERROR)
-    return respone
+        response = Response(json.dumps({"error": "employee add failed --##add details##--"}), RESPONSE_SERVER_ERROR)
+    return response
+
+@app.route('/projects', methods = ['GET'])
+def add_employees_form():
+
+@app.route('/employees/add', methods = ['GET'])
+def render_add_employees():
+    return render_template('add_employee.html')
 
 
 @app.route('/employees', methods = ['GET'])
