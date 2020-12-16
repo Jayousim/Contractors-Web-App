@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, Response, redirect
 from db_api import employee_api, projects_api
+from datetime import date, datetime, timedelta
 import requests
 import json
 
@@ -105,7 +106,7 @@ def schedule_employee_to_project():
 
 
 @app.route('/schedule/<project_id>', methods = ['GET'])
-def schedule_employees_to_project(project_id):
+def schedule_employees_project(project_id):
     available = employee_api.get_all_available()
     return render_template('schedule.html', project = project_id, available_employees = available)
 
@@ -113,6 +114,20 @@ def schedule_employees_to_project(project_id):
 @app.route('/time_line', methods = ['GET'])
 def time_lines():
     time_lines = projects_api.get_all_history_time_line()
+    today_date = date.today()
+    
+    for project_time_line in time_lines:
+        start_date = datetime.strptime(project_time_line['start_date'], '%d/%m/%Y')
+        end_date =  datetime.strptime(project_time_line['end_date'], '%d/%m/%Y')
+        progress = int((datetime.now() - start_date).days)
+        if progress < 0:
+            progress = 0
+        ends_in = (end_date - start_date).days
+        project_time_line.pop('start_date')
+        project_time_line.pop('end_date')
+        project_time_line['progress'] = int(((progress / int(ends_in)) * 100)+1)
+
+       
     return render_template('time_lines.html', time_lines=time_lines)
 
 
