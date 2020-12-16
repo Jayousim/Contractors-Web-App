@@ -18,9 +18,12 @@
             <tr>
                 {%for cell in project%}
                     <td>{{project.get(cell)}}</td>
-                {%endfor%}
-                <button type="button"> Add employee to project</button>
+                {%endfor%} 
+                <td> <a href="/schedule/{{ project.get('name') }}"> Add employee to project </a> </td>
+                
+
             </tr> 
+           
         {%endfor%}
     </table>
 

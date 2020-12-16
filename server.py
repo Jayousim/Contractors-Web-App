@@ -49,7 +49,9 @@ def render_set_employees():
 def render_my_projects():
     return render_template('my_projects.html', projects = mock_projects)
 
-
+@app.route('/schedule/<project_name>', methods = ['GET'])
+def schedule_employee_to_project(project_name):
+    return render_template('schedule.html', project = project_name)
 
 if __name__ == "__main__":
     app.run( port = 3000 )
