@@ -1,4 +1,4 @@
--- CREATE DATABASE constractors_union;
+CREATE DATABASE constractors_union;
 
 USE constractors_union;
 

@@ -8,5 +8,22 @@
 </head>
 <body>
     
+    <table> 
+        <tr>
+            <th>Project</th>
+            <th>Employees</th>
+            <th>progress</th>
+        </tr>
+        {%for project in projects%}
+            <tr>
+                {%for cell in project%}
+                    <td>{{project.get(cell)}}</td>
+                {%endfor%} 
+                <td> <a href="/schedule/{{ project.get('id') }}"> Add employee to project </a> </td>
+            </tr> 
+           
+        {%endfor%}
+    </table>
+
 </body>
 </html>
