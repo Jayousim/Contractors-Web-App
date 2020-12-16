@@ -24,10 +24,10 @@
             </tr>
             {%for employee in employees%}
                 <tr>
-                    {%for attribute in employee%}
+                    {%for attribute in employee.values()%}
                         <td>{{attribute}}</td>
                     {%endfor%}
-                    <td> <a href="/remove_employee/"> Remove </a> </td>
+                    <td> <a href="/remove_employee/{{ employee['id'] }}"  > Remove </a> </td>
                 </tr>
             {%endfor%}
         </table>

@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, Response
+from flask import Flask, render_template, request, Response, redirect
+from db_api import employee_api, projects_api
 import requests
 import json
 
@@ -33,15 +34,22 @@ def add_employees_form():
 
 
 @app.route('/employees', methods = ['GET'])
-def render_add_employees():
-    return render_template('add_employee.html')
+def render_employees():
+    employees = employee_api.get_all_employees()
+    return render_template('my_employees.html', employees=employees)
 
 @app.route('/employees/set', methods = ['GET'])
 def render_set_employees():
     return render_template('scheduling.html')
 
+@app.route('/remove_employee/<employee_id>', methods = ['GET'])
+def delete_employees(employee_id):
+    employee_api.delete_employee(employee_id)
+    return redirect("http://localhost:3000/employees", code=302)
+
 @app.route('/projects', methods = ['GET'])
 def render_my_projects():
+
     return render_template('my_projects.html')
 
 
