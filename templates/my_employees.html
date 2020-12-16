@@ -11,7 +11,24 @@
 
     </header>
     <nav>
-        <a href="/">Home</a> |
+        <a href="/">Home</a>
     </nav>
+    <section>
+        <table>
+            <tr>
+                <th> C01 </th>
+                <th> C02 </th>
+                <th> C03 </th>
+                <th> C04 </th>
+            </tr>
+            {%for employee in employees%}
+                <tr>
+                    {%for attribute in employee%}
+                        <td>{{attribute}}</td>
+                    {%endfor%}
+                </tr>
+            {%endfor%}
+        </table>
+    </section>
 </body>
 </html>
