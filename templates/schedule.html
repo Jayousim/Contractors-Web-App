@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scheduling</title>
+    <link rel="stylesheet" type="text/css" href="css/scheduling.css" />
+</head>
+
+<body>
+    <section>
+        <table>
+            <tr>
+                <th> id </th>
+                <th> name </th>
+                <th> phone_number </th>
+                <th> job </th>
+                <th> status </th>
+            </tr>
+            {%for employee in available_employees%}
+                <tr>
+                    {%for attribute in employee.values()%}
+                        <td>{{attribute}}</td>
+                    {%endfor%}
+                    <td> <a href="/schedule?project_id={{project}}&employee_id={{employee.get('id')}}"> Add employee to project </a> </td>
+                </tr>
+            {%endfor%}
+        </table>
+    </section>
+    
+</body>
+</html>

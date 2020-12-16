@@ -6,7 +6,24 @@
     <title> My Projects </title>
     <link rel="stylesheet" type="text/css" href="css/my_projects.css" />
 </head>
-<body>
+<body>    
+    <table> 
+        <tr>
+            <th>Project</th>
+            <th>Employees</th>
+            <th>progress</th>
+        </tr>
+        {%for project in projects%}
+            <tr>
+                <td>{{employees.get(project.get('id'))}}</td>
+                {%for cell in project%}
+                    <td>{{project.get(cell)}}</td>
+                {%endfor%} 
+                <td> <a href="/schedule/{{ project.get('id') }}"> Add employee to project </a> </td>
+            </tr> 
+           
+        {%endfor%}
+    </table>
     {% include 'footer.html' %}
 </body>
 </html>
