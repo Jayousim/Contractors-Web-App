@@ -9,11 +9,6 @@ RESPONSE_CREATED = 201
 RESPONSE_DELETED = 204
 RESPONSE_SERVER_ERROR = 500
 
-mock_projects = [{"name":"building1" , "employees" : ["employee1", "employee2"], "progress" : 14}, 
-                 {"name":"hitech park","employees" : ["employee15", "employee22"], "progress" : 3}, 
-                    {"name":"school", "employees" : ["employee5", "employee4"], "progress" : 34},
-                    {"name":"school", "employees" : ["employee5", "employee4"],"progress" : 50}  ]
-
 app = Flask(__name__, static_url_path='', 
               static_folder='static', 
               template_folder='templates'
