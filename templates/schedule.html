@@ -17,11 +17,14 @@
                 <th> phone_number </th>
                 <th> job </th>
                 <th> status </th>
+                <th> constructor_id </th>
             </tr>
             {%for employee in available_employees%}
                 <tr>
-                    {%for attribute in employee.values()%}
-                        <td>{{attribute}}</td>
+                    {%for attribute in employee%}
+                        {% if attribute != 'project_id'%}
+                        <td>{{employee.get(attribute)}}</td>
+                        {% endif %}
                     {%endfor%}
                     <td> <a href="/schedule?project_id={{project}}&employee_id={{employee.get('id')}}"> Add employee to project </a> </td>
                 </tr>
