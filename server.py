@@ -49,9 +49,13 @@ def delete_employees(employee_id):
 
 @app.route('/projects', methods = ['GET'])
 def render_my_projects():
-
     return render_template('my_projects.html')
 
+
+@app.route('/time_line', methods = ['GET'])
+def time_lines():
+    time_lines = projects_api.get_all_history_time_line()
+    return render_template('time_lines.html', time_lines=time_lines)
 
 
 if __name__ == "__main__":

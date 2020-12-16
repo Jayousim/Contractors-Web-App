@@ -38,6 +38,7 @@ CREATE TABLE employee(
 
 CREATE TABLE time_line(
     project_id INT NOT NULL PRIMARY KEY,
+    name VARCHAR(64),
     start_date VARCHAR(64) NOT NULL,
     end_date VARCHAR(64) NOT NULL,
     FOREIGN KEY(project_id) REFERENCES project(id)
