@@ -36,8 +36,6 @@ def add_employees_form():
         response = Response(json.dumps({"error": "employee add failed --##add details##--"}), RESPONSE_SERVER_ERROR)
     return response
 
-
-
 @app.route('/projects', methods = ['POST'])
 def add_project_form():
     name = request.form['project_name']
@@ -55,8 +53,6 @@ def add_project_form():
 @app.route('/projects/add', methods = ['GET'])
 def add_projects():
     return render_template('new_project.html')
-    
-    
 
 @app.route('/employees/add', methods = ['GET'])
 def render_add_employees():
