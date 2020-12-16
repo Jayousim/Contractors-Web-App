@@ -8,7 +8,8 @@
 </head>
 
 <body>
-    <section>
+    {% include 'header.html' %}
+    <section id="main_section">
         <table>
             <tr>
                 <th> id </th>
@@ -27,6 +28,6 @@
             {%endfor%}
         </table>
     </section>
-    
+    {% include 'footer.html' %}
 </body>
 </html>
