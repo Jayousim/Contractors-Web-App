@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Add New Project Details </title>
+    <link rel="stylesheet" type="text/css" href="/css/my_projects.css" />
+    <link rel="stylesheet" type="text/css" href="/css/table_style.css" />
+</head>
+<body> 
+    {% include 'header.html' %}
+    <section id="main_section"> 
+        <div>
+            <h3> Employee Details </h3>
+            <form action="/projects" method="POST" >
+                <label> Name: </label>
+                <input type="text" id="project_name" name="project_name"><br><br>
+                 
+                <label> Addres: </label>
+                <input type="text" id="project_address" name="project_address"><br><br>
+                
+                <label> Contractor Id: </label>
+                <input type="tel" id="constractor_id" name="constractor_id"><br><br>
+
+                <textarea id="project_notes" name="project_notes" rows="4" cols="50">
+                    Enter your notes here
+                </textarea><br><br>
+
+                <label> Start Date: </label>
+                <input type="date" id="start_date" name="start_date"><br><br>
+                <label> Deadline: </label>
+                <input type="date" id="deadline" name="deadline"><br><br>
+
+                <input type="submit" value="submit" />
+
+            </form>
+        </div>
+    </section>
+    {% include 'footer.html' %}
+</body>
+</html>
