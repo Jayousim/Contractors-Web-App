@@ -33,6 +33,15 @@ def get_all_employees():
         result = cursor.fetchall()
     return result
 
+
+def get_all_available():
+    with connection.cursor() as cursor:
+        query = """ SELECT * FROM employee WHERE STATUS = 1 """
+        cursor.execute(query, ())
+        connection.commit()
+        result = cursor.fetchall()
+    return result
+
 def add_new_employee(employee_id, employee_name, employee_phone_number, employee_job):
     constractor_id = get_constractor()['id']
     with connection.cursor() as cursor:

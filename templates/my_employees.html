@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Employees</title>
+    <link rel="stylesheet" type="text/css" href="css/my_employees.css" />
+</head>
+<body>
+    <header>
+
+    </header>
+    <nav>
+        <a href="/">Home</a>
+    </nav>
+    <section>
+        <table>
+            <tr>
+                <th> id </th>
+                <th> name </th>
+                <th> phone_number </th>
+                <th> job </th>
+                <th> status </th>
+            </tr>
+            {%for employee in employees%}
+                <tr>
+                    {%for attribute in employee.values()%}
+                        <td>{{attribute}}</td>
+                    {%endfor%}
+                    <td> <a href="/remove_employee/{{ employee['id'] }}"  > Remove </a> </td>
+                </tr>
+            {%endfor%}
+        </table>
+    </section>
+    <footer>
+        <h4> Contractors Union </h4>
+    </footer>
+</body>
+</html>

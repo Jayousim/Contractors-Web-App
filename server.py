@@ -54,12 +54,27 @@ def delete_employees(employee_id):
 
 @app.route('/projects', methods = ['GET'])
 def render_my_projects():
-    return render_template('my_projects.html', projects = mock_projects)
+    projects = projects_api.get_all_projects()
+    all_employees = {}
+    for project in projects:
+        pid = project.get('id')  
+        project_employees = employee_api.get_all_employees_works_in_project(pid) 
+        all_employees[pid] = [employee.get('name') for employee in project_employees]
+    return render_template('my_projects.html', projects = projects, employees = all_employees)
+
+@app.route('/schedule', methods = ['GET'])
+def schedule_employee_to_project():
+    project_id = request.args.get('project_id')
+    employee_id = request.args.get('employee_id')
+    employee_api.set_employee_status(employee_id, project_id)
+    available = employee_api.get_all_available()
+    return render_template('schedule.html', project = project_id, available_employees = available)
 
 
-@app.route('/schedule/<project_name>', methods = ['GET'])
-def schedule_employee_to_project(project_name):
-    return render_template('schedule.html', project = project_name, available_employees = )
+@app.route('/schedule/<project_id>', methods = ['GET'])
+def schedule_employees_to_project(project_id):
+    available = employee_api.get_all_available()
+    return render_template('schedule.html', project = project_id, available_employees = available)
 
 
 @app.route('/time_line', methods = ['GET'])

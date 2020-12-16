@@ -16,12 +16,11 @@
         </tr>
         {%for project in projects%}
             <tr>
+                <td>{{employees.get(project.get('id'))}}</td>
                 {%for cell in project%}
                     <td>{{project.get(cell)}}</td>
                 {%endfor%} 
-                <td> <a href="/schedule/{{ project.get('name') }}"> Add employee to project </a> </td>
-                
-
+                <td> <a href="/schedule/{{ project.get('id') }}"> Add employee to project </a> </td>
             </tr> 
            
         {%endfor%}

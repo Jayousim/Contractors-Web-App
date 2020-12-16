@@ -8,10 +8,25 @@
 </head>
 
 <body>
-
-    {% include 'my_employees.html' %}
-    {{project}}
-
+    <section>
+        <table>
+            <tr>
+                <th> id </th>
+                <th> name </th>
+                <th> phone_number </th>
+                <th> job </th>
+                <th> status </th>
+            </tr>
+            {%for employee in available_employees%}
+                <tr>
+                    {%for attribute in employee.values()%}
+                        <td>{{attribute}}</td>
+                    {%endfor%}
+                    <td> <a href="/schedule?project_id={{project}}&employee_id={{employee.get('id')}}"> Add employee to project </a> </td>
+                </tr>
+            {%endfor%}
+        </table>
+    </section>
     
 </body>
 </html>
