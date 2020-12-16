@@ -21,7 +21,8 @@ app = Flask(__name__, static_url_path='',
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    table = [['one','two','three'],['four','five','six'],['seven','eight','nine']]
+    return render_template('index.html', item = table )
 
 
 @app.route('/employees', methods = ['POST'])
