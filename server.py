@@ -41,10 +41,6 @@ def add_employees_form():
 @app.route('/projects', methods = ['POST'])
 def add_project_form():
     name = request.form['project_name']
-    # address = request.form['project_address']
-    # constractor_id = request.form['constractor_id']
-    # project_notes = request.form['project_notes']
-    # start_date = request.form['project_notes']
     params = request.form.to_dict()
     try:
         projects_api.add_new_project(*params.values())
