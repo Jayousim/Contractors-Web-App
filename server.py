@@ -114,7 +114,6 @@ def schedule_employees_project(project_id):
 @app.route('/time_line', methods = ['GET'])
 def time_lines():
     time_lines = projects_api.get_all_history_time_line()
-    today_date = date.today()
     
     for project_time_line in time_lines:
         start_date = datetime.strptime(project_time_line['start_date'], '%d/%m/%Y')
@@ -125,7 +124,12 @@ def time_lines():
         ends_in = (end_date - start_date).days
         project_time_line.pop('start_date')
         project_time_line.pop('end_date')
-        project_time_line['progress'] = int(((progress / int(ends_in)) * 100)+1)
+        if progress == 0:
+            project_time_line['progress'] = 0
+        elif progress == int(ends_in):
+            project_time_line['progress'] = 100
+        else:
+            project_time_line['progress'] = int(((progress / int(ends_in)) * 100)+1)
 
        
     return render_template('time_lines.html', time_lines=time_lines)
