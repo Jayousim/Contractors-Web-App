@@ -9,6 +9,11 @@ RESPONSE_CREATED = 201
 RESPONSE_DELETED = 204
 RESPONSE_SERVER_ERROR = 500
 
+mock_projects = [{"name":"building1" , "employees" : ["employee1", "employee2"], "progress" : 14}, 
+                 {"name":"hitech park","employees" : ["employee15", "employee22"], "progress" : 3}, 
+                    {"name":"school", "employees" : ["employee5", "employee4"], "progress" : 34},
+                    {"name":"school", "employees" : ["employee5", "employee4"],"progress" : 50}  ]
+
 app = Flask(__name__, static_url_path='', 
               static_folder='static', 
               template_folder='templates'
@@ -54,9 +59,33 @@ def delete_employees(employee_id):
 
 @app.route('/projects', methods = ['GET'])
 def render_my_projects():
+    projects = projects_api.get_all_projects()
+    all_employees = {}
+    for project in projects:
+        pid = project.get('id')  
+        project_employees = employee_api.get_all_employees_works_in_project(pid) 
+        all_employees[pid] = [employee.get('name') for employee in project_employees]
+    return render_template('my_projects.html', projects = projects, employees = all_employees)
 
-    return render_template('my_projects.html')
+@app.route('/schedule', methods = ['GET'])
+def schedule_employee_to_project():
+    project_id = request.args.get('project_id')
+    employee_id = request.args.get('employee_id')
+    employee_api.set_employee_status(employee_id, project_id)
+    available = employee_api.get_all_available()
+    return render_template('schedule.html', project = project_id, available_employees = available)
 
+
+@app.route('/schedule/<project_id>', methods = ['GET'])
+def schedule_employees_to_project(project_id):
+    available = employee_api.get_all_available()
+    return render_template('schedule.html', project = project_id, available_employees = available)
+
+
+@app.route('/time_line', methods = ['GET'])
+def time_lines():
+    time_lines = projects_api.get_all_history_time_line()
+    return render_template('time_lines.html', time_lines=time_lines)
 
 
 if __name__ == "__main__":

@@ -11,8 +11,8 @@ def add_new_project(project_name,project_address,constractor_id,project_notes, s
         connection.commit()
         last_id = cursor.fetchone()['last_insert_id()']
 
-        query=""" INSERT INTO time_line (project_id,start_date,end_date) VALUES(%s,%s,%s)"""
-        cursor.execute(query,(last_id, start_date,end_date ))
+        query=""" INSERT INTO time_line (project_id,name,start_date,end_date) VALUES(%s,%s,%s,%s)"""
+        cursor.execute(query,(last_id,project_name,start_date,end_date ))
         connection.commit()
 
         
@@ -29,6 +29,14 @@ def get_project_by_id(project_id):
 def get_all_projects():
     with connection.cursor() as cursor:
         query = """ SELECT * FROM project"""
+        cursor.execute(query, ())
+        connection.commit()
+        result = cursor.fetchall()
+    return result
+
+def get_all_history_time_line():
+    with connection.cursor() as cursor:
+        query = """ SELECT * FROM time_line"""
         cursor.execute(query, ())
         connection.commit()
         result = cursor.fetchall()
