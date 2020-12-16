@@ -8,5 +8,21 @@
 </head>
 <body>
     
+    <table> 
+        <tr>
+            <th>Project</th>
+            <th>Employees</th>
+            <th>progress</th>
+        </tr>
+        {%for project in projects%}
+            <tr>
+                {%for cell in project%}
+                    <td>{{project.get(cell)}}</td>
+                {%endfor%}
+                <button type="button"> Add employee to project</button>
+            </tr> 
+        {%endfor%}
+    </table>
+
 </body>
 </html>
