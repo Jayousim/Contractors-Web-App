@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Employees</title>
-    <link rel="stylesheet" type="text/css" href="css/my_employees.css" />
+    <link rel="stylesheet" type="text/css" href="css/my_employees.css" /> 
+    <link rel="stylesheet" type="text/css" href="css/table_style.css" />
 </head>
 <body>
     <header>
@@ -14,26 +15,29 @@
         <a href="/">Home</a>
     </nav>
     <section>
-        <table>
-            <tr>
-                <th> id </th>
-                <th> name </th>
-                <th> phone_number </th>
-                <th> job </th>
-                <th> status </th>
-            </tr>
-            {%for employee in employees%}
+        <table class="content-table">
+            <thead>
                 <tr>
-                    {%for attribute in employee.values()%}
-                        <td>{{attribute}}</td>
-                    {%endfor%}
-                    <td> <a href="/remove_employee/{{ employee['id'] }}"  > Remove </a> </td>
+                    <th> ID </th>
+                    <th> Name </th>
+                    <th> Phone Number </th>
+                    <th> Job </th>
+                    <th> Status </th>
+                    <th> Remove Employee </th>
                 </tr>
-            {%endfor%}
+            </thead>
+            <tbody>
+                {%for employee in employees%}
+                    <tr>
+                        {%for attribute in employee.values()%}
+                            <td>{{attribute}}</td>
+                        {%endfor%}
+                        <td> <a href="/remove_employee/{{ employee['id'] }}"  > Remove </a> </td>
+                    </tr>
+                {%endfor%}
+            </tbody>
         </table>
     </section>
-    <footer>
-        <h4> Contractors Union </h4>
-    </footer>
+    {% include 'footer.html' %}
 </body>
 </html>
