@@ -23,7 +23,7 @@
             </tr>
             {%for employee in employees%}
                 <tr>
-                    {%for attribute in employee%}
+                    {%for attribute in employee.values()%}
                         <td>{{attribute}}</td>
                     {%endfor%}
                 </tr>

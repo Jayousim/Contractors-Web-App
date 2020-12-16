@@ -21,7 +21,7 @@ print("\n")
 employee_api.free_employee_status(123)
 print(employee_api.get_all_employees())
 
-projects_api.add_new_project("microsoft building","Jerusalem",1,"build a new high tech building for microsoft")
+projects_api.add_new_project("microsoft building","Jerusalem",1,"build a new high tech building for microsoft","15/10/2020", "5/5/2022")
 
 print(projects_api.get_all_projects())
 print("\n")
