@@ -36,8 +36,9 @@ def add_employees_form():
         response = Response(json.dumps({"error": "employee add failed --##add details##--"}), RESPONSE_SERVER_ERROR)
     return response
 
-@app.route('/projects', methods = ['GET'])
-def add_employees_form():
+@app.route('/projects/add', methods = ['GET'])
+def add_projects_form():
+    pass
 
 @app.route('/employees/add', methods = ['GET'])
 def render_add_employees():
