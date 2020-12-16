@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, Response, redirect
 from db_api import employee_api, projects_api
+from datetime import date, datetime, timedelta
 import requests
 import json
 
@@ -8,7 +9,6 @@ RESPONSE_OK = 200
 RESPONSE_CREATED = 201
 RESPONSE_DELETED = 204
 RESPONSE_SERVER_ERROR = 500
-
 
 app = Flask(__name__, static_url_path='', 
               static_folder='static', 
@@ -24,21 +24,35 @@ def home():
 
 @app.route('/employees', methods = ['POST'])
 def add_employees_form():
-    id = request.form['employee_id']
+    e_id = request.form['employee_id']
     name = request.form['employee_name']
     phone = request.form['employee_phone']
     position = request.form['employee_position']
     try:
-        employee_api.add_new_employee(id, name, phone, position)
+        employee_api.add_new_employee(e_id, name, phone, position)
         payload = {"text": f"{name} added"}
         response = Response(json.dumps(payload))
     except:
         response = Response(json.dumps({"error": "employee add failed --##add details##--"}), RESPONSE_SERVER_ERROR)
     return response
 
+@app.route('/projects', methods = ['POST'])
+def add_project_form():
+    name = request.form['project_name']
+    params = request.form.to_dict()
+    try:
+        projects_api.add_new_project(*params.values())
+        payload = {"text": f"{name} project added"}
+        response = Response(json.dumps(payload))
+    except Exception as ex:
+        print(ex)
+        response = Response(json.dumps({"error": "employee add failed --##add details##--"}), RESPONSE_SERVER_ERROR)
+    return response
+        
+    
 @app.route('/projects/add', methods = ['GET'])
-def add_projects_form():
-    pass
+def add_projects():
+    return render_template('new_project.html')
 
 @app.route('/employees/add', methods = ['GET'])
 def render_add_employees():
@@ -84,7 +98,7 @@ def schedule_employee_to_project():
 
 
 @app.route('/schedule/<project_id>', methods = ['GET'])
-def schedule_employees_to_project(project_id):
+def schedule_employees_project(project_id):
     available = employee_api.get_all_available()
     return render_template('schedule.html', project = project_id, available_employees = available)
 
@@ -92,9 +106,22 @@ def schedule_employees_to_project(project_id):
 @app.route('/time_line', methods = ['GET'])
 def time_lines():
     time_lines = projects_api.get_all_history_time_line()
+    today_date = date.today()
+    
+    for project_time_line in time_lines:
+        start_date = datetime.strptime(project_time_line['start_date'], '%d/%m/%Y')
+        end_date =  datetime.strptime(project_time_line['end_date'], '%d/%m/%Y')
+        progress = int((datetime.now() - start_date).days)
+        if progress < 0:
+            progress = 0
+        ends_in = (end_date - start_date).days
+        project_time_line.pop('start_date')
+        project_time_line.pop('end_date')
+        project_time_line['progress'] = int(((progress / int(ends_in)) * 100)+1)
+
+       
     return render_template('time_lines.html', time_lines=time_lines)
 
 
 if __name__ == "__main__":
     app.run( port = 3000 )
-
