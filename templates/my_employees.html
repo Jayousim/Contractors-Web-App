@@ -27,8 +27,16 @@
             <tbody>
                 {%for employee in employees%}
                     <tr>
-                        {%for attribute in employee.values()%}
-                            <td>{{attribute}}</td>
+                        {%for key, val in employee.items()%}
+                            {%if key == "status"%}
+                                {%if val =="false"%}
+                                    <td><div class="circle red_circle"></td>
+                                {% else %}
+                                    <td><div class="circle green_circle"></td>
+                                {% endif %}
+                            {% else %}
+                                <td>{{val}}</td>
+                            {% endif %}
                         {%endfor%}
                         <td> <a href="/remove_employee/{{employee['id']}}"  > Remove </a> </td>
                     </tr>
