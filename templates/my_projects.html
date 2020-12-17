@@ -29,7 +29,7 @@
                         <td>{{project.get('address')}}</td>
                         <td>{{project.get('notes')}}</td>
                         
-                    <td>{{employees.get(project.get('id'))}}</td>
+                    <td>{% include 'employees_dialog.html' %} {{employees.get(project.get('id'))}}</td>
                     <td>
                         <form action="/schedule/{{project.get('id')}}" class="inline">
                             <button class="button button2" >Add employee to project</button>
