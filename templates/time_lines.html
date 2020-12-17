@@ -13,7 +13,7 @@
         <a href="/">Home</a>
     </nav>
     <section id="main_section">
-        <table>
+        <table class="content-table">
             <tr>
                 <th> id </th>
                 <th> name </th>
@@ -21,12 +21,12 @@
             </tr>
             {%for time_line in time_lines%}
                 <tr>
-                        <td>{{time_line.get('id')}}</td>
+                        <td>{{time_line.get('project_id')}}</td>
                         <td>{{time_line.get('name')}}</td>
                         <td>
-                        <div class="w3-light-grey w3-round-xlarge">
-                        <div class="w3-container w3-blue w3-round-xlarge" style="width:{{time_line.get('progress')}}%">{{time_line.get('progress')}}%</div>
-                        </div>
+                            <div class="w3-light-grey w3-round-xlarge">
+                            <div class="w3-container w3-blue w3-round-xlarge" style="width:{{time_line.get('progress')}}%">{{time_line.get('progress')}}%</div>
+                            </div>
                         </td>
                     
                 </tr>

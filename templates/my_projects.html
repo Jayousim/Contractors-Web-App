@@ -13,28 +13,34 @@
         <table class="content-table"> 
             <thead>
                 <tr>
-                    <th>Employees</th>
                     <th>Id</th>
                     <th>Project</th>
                     <th>Adress</th>
-                    <th>Contractor Id</th>
                     <th>Project Notes</th>
+                    <th>Employees</th>
+                    <th>add new eployees</th>
                 </tr>
             </thead>
             <tbody>
                 {%for project in projects%}
                 <tr>
-                    <td>{{employees.get(project.get('id'))}}</td>
-                    {%for cell in project%}
-                        <td>{{project.get(cell)}}</td>
-                    {%endfor%} 
-                    <td> <a href="/schedule/{{project.get('id')}}"> Add employee to project </a> </td>
+                        <td>{{project.get('id')}}</td>
+                        <td>{{project.get('name')}}</td>
+                        <td>{{project.get('address')}}</td>
+                        <td>{{project.get('notes')}}</td>
+                        
+                    <td>{% include 'employees_dialog.html' %} {{employees.get(project.get('id'))}}</td>
+                    <td>
+                        <form action="/schedule/{{project.get('id')}}" class="inline">
+                            <button class="button button2" >Add employee to project</button>
+                        </form>
+                    </td>
                 </tr>
                 {%endfor%}
             </tbody>
         </table>
         <form action="/projects/add" class="inline">
-            <button class="float-left submit-button" >Add new Project</button>
+            <button id="add_btn" class="button button2" >Add new Project</button>
         </form>
     </section>
     

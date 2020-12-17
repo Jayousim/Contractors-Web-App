@@ -31,7 +31,7 @@ def add_employees_form():
     try:
         employee_api.add_new_employee(e_id, name, phone, position)
         payload = {"text": f"{name} added"}
-        response = Response(json.dumps(payload))
+        response = redirect('/employees')
     except:
         response = Response(json.dumps({"error": "employee add failed --##add details##--"}), RESPONSE_SERVER_ERROR)
     return response
@@ -86,6 +86,7 @@ def render_my_projects():
         pid = project.get('id')  
         project_employees = employee_api.get_all_employees_works_in_project(pid) 
         all_employees[pid] = [employee.get('name') for employee in project_employees]
+    print(projects)
     return render_template('my_projects.html', projects = projects, employees = all_employees)
 
 @app.route('/schedule', methods = ['GET'])
@@ -122,6 +123,8 @@ def time_lines():
             project_time_line['progress'] = 100
         else:
             project_time_line['progress'] = int(((progress / int(ends_in)) * 100)+1)
+
+        print(time_lines)
 
        
     return render_template('time_lines.html', time_lines=time_lines)
