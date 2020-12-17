@@ -22,6 +22,13 @@
                 </tr>
             </thead>
             <tbody>
+            <script>
+                        // When the user clicks on div, open the popup
+                function myFunction(element_id) {
+                var popup = document.getElementById(element_id);
+                popup.classList.toggle("show");
+                }
+                </script>
                 {%for project in projects%}
                 <tr>
                         <td>{{project.get('id')}}</td>
@@ -29,7 +36,20 @@
                         <td>{{project.get('address')}}</td>
                         <td>{{project.get('notes')}}</td>
                         
-                    <td>{% include 'employees_dialog.html' %} {{employees.get(project.get('id'))}}</td>
+                    <td>{% include 'employees_dialog.html' %}  
+
+                        
+
+                        <button class="popup" class="button button2" onclick="myFunction({{project.get('id')}})">Show Employees
+                            <span class="popuptext" id="{{project.get('id')}}">
+                            {%for element in employees.get(project.get('id')) %}
+                            {{element}} ,
+                            
+                            
+                            {%endfor%}
+                            </span>
+                        </button>
+                    </td>
                     <td>
                         <form action="/schedule/{{project.get('id')}}" class="inline">
                             <button class="button button2" >Add employee to project</button>
