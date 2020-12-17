@@ -112,10 +112,20 @@ def schedule_employees_project(project_id):
     available = employee_api.get_all_available()
     return render_template('schedule.html', project = project_id, available_employees = available)
 
+
+@app.route('/schedule/remove', methods = ['GET'])
+def schedule_remove_employee_project():
+    project_id = request.args.get('project_id')
+    employee_id = request.args.get('employee_id')
+    employee_api.free_employee_status(employee_id)
+    project_employees = employee_api.get_all_employees_works_in_project(project_id)
+    return render_template('schedule_remove.html', project = project_id, available_employees = project_employees)
+
+
 @app.route('/schedule/remove/<project_id>', methods = ['GET'])
 def schedule_free_employees_project(project_id):
-    available = employee_api.get_all_available()
-    return render_template('schedule.html', project = project_id, available_employees = available)
+    project_employees = employee_api.get_all_employees_works_in_project(project_id)
+    return render_template('schedule_remove.html', project = project_id, available_employees = project_employees)
 
 @app.route('/time_line', methods = ['GET'])
 def time_lines():

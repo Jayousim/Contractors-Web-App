@@ -19,6 +19,7 @@
                     <th>Project Notes</th>
                     <th>Employees</th>
                     <th>add new eployees</th>
+                    <th>Remove eployees</th>
                     <th> Delete Project </th>
 
                 </tr>
@@ -55,6 +56,12 @@
                     <td>
                         <form action="/schedule/{{project.get('id')}}" class="inline">
                             <button class="button button2" >Add employee to project</button>
+                        </form>
+                        
+                    </td>
+                    <td>
+                        <form action="/schedule/remove/{{project.get('id')}}" class="inline">
+                            <button class="button button2" >Remove employee from project</button>
                         </form>
                         
                     </td>
