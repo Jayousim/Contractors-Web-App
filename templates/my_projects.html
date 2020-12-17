@@ -55,6 +55,11 @@
                             <button class="button button2" >Add employee to project</button>
                         </form>
                     </td>
+                    <td>
+                        <form action="/schedule/{{project.get('id')}}" class="inline">
+                            <button class="button button2" >remove employee from project</button>
+                        </form>
+                    </td>
                 </tr>
                 {%endfor%}
             </tbody>
