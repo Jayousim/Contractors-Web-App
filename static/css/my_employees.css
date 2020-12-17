@@ -1,0 +1,21 @@
+
+
+
+.circle{
+    content: "";
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+}
+
+.red_circle{
+    border: 3px solid red;
+    background: red;
+}
+
+.green_circle{
+    border: 3px solid green;
+    background: green;
+}
