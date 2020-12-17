@@ -36,15 +36,9 @@ def add_employees_form():
         response = Response(json.dumps({"error": "employee add failed --##add details##--"}), RESPONSE_SERVER_ERROR)
     return response
 
-
-
 @app.route('/projects', methods = ['POST'])
 def add_project_form():
     name = request.form['project_name']
-    # address = request.form['project_address']
-    # constractor_id = request.form['constractor_id']
-    # project_notes = request.form['project_notes']
-    # start_date = request.form['project_notes']
     params = request.form.to_dict()
     try:
         projects_api.add_new_project(*params.values())
@@ -59,8 +53,6 @@ def add_project_form():
 @app.route('/projects/add', methods = ['GET'])
 def add_projects():
     return render_template('new_project.html')
-    
-    
 
 @app.route('/employees/add', methods = ['GET'])
 def render_add_employees():

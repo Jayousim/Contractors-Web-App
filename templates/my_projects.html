@@ -13,9 +13,12 @@
         <table class="content-table"> 
             <thead>
                 <tr>
-                    <th>Project</th>
                     <th>Employees</th>
-                    <th>progress</th>
+                    <th>Id</th>
+                    <th>Project</th>
+                    <th>Adress</th>
+                    <th>Contractor Id</th>
+                    <th>Project Notes</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,7 +28,7 @@
                     {%for cell in project%}
                         <td>{{project.get(cell)}}</td>
                     {%endfor%} 
-                    <td> <a href="/schedule/{{ project.get('id') }}"> Add employee to project </a> </td>
+                    <td> <a href="/schedule/{{project.get('id')}}"> Add employee to project </a> </td>
                 </tr>
                 {%endfor%}
             </tbody>
