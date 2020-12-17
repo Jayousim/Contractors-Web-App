@@ -19,6 +19,16 @@
     background-color: transparent;
 }
 
+.new_project_form{
+    margin-top: 30px;
+    width:500px;
+    padding:20px;
+    border: 5px solid #34495E;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: transparent;
+}
 
 
 .form__field {
