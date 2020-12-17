@@ -41,3 +41,9 @@ def get_all_history_time_line():
         connection.commit()
         result = cursor.fetchall()
     return result
+
+def delete_project(project_id):
+    with connection.cursor() as cursor:
+        query = """ DELETE FROM project WHERE id=%s;"""
+        cursor.execute(query, (project_id))
+        connection.commit()

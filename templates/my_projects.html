@@ -19,6 +19,8 @@
                     <th>Project Notes</th>
                     <th>Employees</th>
                     <th>add new eployees</th>
+                    <th> Delete Project </th>
+
                 </tr>
             </thead>
             <tbody>
@@ -40,8 +42,8 @@
 
                         
 
-                        <button class="popup" class="button button2" onclick="myFunction({{project.get('id')}})">Show Employees
-                            <span class="popuptext" id="{{project.get('id')}}">
+                        <button class="popup2" class="button2" onclick="myFunction({{project.get('id')}})">Show Employees
+                            <span class="popuptext2" id="{{project.get('id')}}">
                             {%for element in employees.get(project.get('id')) %}
                             {{element}} ,
                             
@@ -53,6 +55,12 @@
                     <td>
                         <form action="/schedule/{{project.get('id')}}" class="inline">
                             <button class="button button2" >Add employee to project</button>
+                        </form>
+                        
+                    </td>
+                    <td>
+                        <form action="/delete_project/{{project.get('id')}}" class="inline">
+                            <button class="button button2" >Delete</button>
                         </form>
                     </td>
                 </tr>

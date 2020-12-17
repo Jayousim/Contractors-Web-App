@@ -38,13 +38,16 @@
                                 <td>{{val}}</td>
                             {% endif %}
                         {%endfor%}
-                        <td> <a href="/remove_employee/{{employee['id']}}"  > Remove </a> </td>
+                        <td> 
+                        <form action="/remove_employee/{{employee['id']}}" class="inline">
+                            <button class="button button2" >Remove</button>
+                        </form>
                     </tr>
                 {%endfor%}
             </tbody>
         </table>
         <form action="/employees/add" class="inline">
-            <button class="float-left submit-button" >Add new employee</button>
+            <button id="add_btn" class="button button2" >Add new employee</button>
         </form>
     </section>
     {% include 'footer.html' %}

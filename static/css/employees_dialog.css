@@ -1,4 +1,4 @@
-.popup {
+.popup2 {
   position: relative;
   display: inline-block;
   cursor: pointer;
@@ -9,10 +9,10 @@
 }
 
 /* The actual popup */
-.popup .popuptext {
+.popup2 .popuptext2 {
   visibility: hidden;
   width: 160px;
-  background-color: #34495E;
+  background-color: #555;
   color: #fff;
   text-align: center;
   border-radius: 6px;
@@ -25,7 +25,7 @@
 }
 
 /* Popup arrow */
-.popup .popuptext::after {
+.popup2 .popuptext2::after {
   content: "";
   position: absolute;
   top: 100%;
@@ -37,7 +37,7 @@
 }
 
 /* Toggle this class - hide and show the popup */
-.popup .show {
+.popup2 .show {
   visibility: visible;
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
@@ -54,27 +54,3 @@
   to {opacity:1 ;}
 }
 
-.popup {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-}
-
-.popup {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #2471A3;
-}
-
-.popup:hover {
-  background-color: #2471A3;
-  color: white;
-}
