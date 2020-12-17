@@ -12,26 +12,27 @@
     <section id="main_section"> 
         <div>
             <h3> Employee Details </h3>
-            <form action="/projects" method="POST" >
-                <label> Name: </label>
-                <input type="text" id="project_name" name="project_name"><br><br>
+            {% include 'form.html' %}
+            <form class="form" action="/projects" method="POST" >
+                <!-- <label> Name: </label> -->
+                <input class="form__field" placeholder="Name" type="text" id="project_name" name="project_name" required><br><br>
                  
-                <label> Addres: </label>
-                <input type="text" id="project_address" name="project_address"><br><br>
+                <!-- <label> Addres: </label> -->
+                <input class="form__field" placeholder="Addres" type="text" id="project_address" name="project_address" required><br><br>
                 
-                <label> Contractor Id: </label>
-                <input type="tel" id="constractor_id" name="constractor_id"><br><br>
+                <!-- <label> Contractor Id: </label> -->
+                <input class="form__field" placeholder="Contractor Id" type="tel" id="constractor_id" name="constractor_id" required><br><br>
 
-                <textarea id="project_notes" name="project_notes" rows="4" cols="50">
+                <textarea class="form__field" placeholder="Notes" id="project_notes" name="project_notes" rows="4" cols="50">
                     Enter your notes here
                 </textarea><br><br>
 
-                <label> Start Date: </label>
-                <input type="date" id="start_date" name="start_date"><br><br>
-                <label> Deadline: </label>
-                <input type="date" id="deadline" name="deadline"><br><br>
+                <!-- <label> Start Date: </label> -->
+                <input class="form__field" placeholder="Start Date" type="date" id="start_date" name="start_date" required><br><br>
+                <!-- <label> Deadline: </label> -->
+                <input class="form__field" placeholder="Deadline" type="date" id="deadline" name="deadline" required><br><br>
 
-                <input type="submit" value="submit" />
+                <input class="button button2" type="submit" value="submit" />
 
             </form>
         </div>

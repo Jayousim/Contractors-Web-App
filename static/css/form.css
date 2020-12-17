@@ -1,0 +1,93 @@
+
+
+.form_title{
+    margin-top: 150px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 36sp;
+    color: #34495E;
+}
+
+.form {
+    margin-top: 30px;
+    width:200px;
+    padding:20px;
+    border: 5px solid #34495E;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: transparent;
+}
+
+
+
+.form__field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid gray;
+    outline: 0;
+    font-size: 1.3rem;
+    color: black;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+.form__field::placeholder {
+    color: black;
+    text-align: center;
+}
+
+.form__field:placeholder-shown {
+    font-size: 1.3rem;
+    cursor: text;
+    top: 20px;
+}
+
+
+.form__field:focus{
+padding-bottom: 6px;  
+font-weight: 700;
+border-width: 3px;
+/* border-image: linear-gradient(to right, primary,secondary); */
+border-image-slice: 1;
+}
+
+.form__field:focus.form__label {
+    position: absolute;
+    top: 0;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+    color: primary;
+    font-weight:700;    
+}
+
+/* reset input */
+.form__field:required, .form__field:invalid { box-shadow:none; }
+
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    /* margin: 4px 2px; */
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+
+  .button2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #2471A3;
+  }
+  
+  .button2:hover {
+    background-color: #2471A3;
+    color: white;
+  }
