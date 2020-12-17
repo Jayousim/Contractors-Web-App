@@ -56,16 +56,16 @@ projects = [
         "address": "Jerusalem",
         "constractor" : 1,
         "notes" : "build a new high tech building for microsoft",
-        "start_date" : "10/12/2020",
-        "end_date" : "15/01/2022"
+        "start_date" : "2020-12-10",
+        "end_date" : "2022-01-15"
     },
     {
         "name": "7 floor building",
         "address": "Jerusalem, tal-puit, 5",
         "constractor" : 1,
         "notes" : "7 floors building for offices",
-        "start_date" : "25/12/2020",
-        "end_date" : "15/08/2021"
+        "start_date" : "2020-12-25",
+        "end_date" : "2021-08-25"
     }
 ]
 

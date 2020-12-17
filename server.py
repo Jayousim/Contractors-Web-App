@@ -43,7 +43,7 @@ def add_project_form():
     try:
         projects_api.add_new_project(*params.values())
         payload = {"text": f"{name} project added"}
-        response = Response(json.dumps(payload))
+        response = redirect("/projects")
     except Exception as ex:
         print(ex)
         response = Response(json.dumps({"error": "employee add failed --##add details##--"}), RESPONSE_SERVER_ERROR)
@@ -86,8 +86,17 @@ def render_my_projects():
         pid = project.get('id')  
         project_employees = employee_api.get_all_employees_works_in_project(pid) 
         all_employees[pid] = [employee.get('name') for employee in project_employees]
-    print(projects)
     return render_template('my_projects.html', projects = projects, employees = all_employees)
+
+
+@app.route('/delete_project/<project_id>', methods = ['GET'])
+def delete_projects(project_id):
+    employees = employee_api.get_all_employees_works_in_project(project_id)
+    for employee in employees:
+        employee_api.free_employee_status(employee['id'])
+    
+    projects_api.delete_project(project_id)
+    return redirect('/projects')
 
 @app.route('/schedule', methods = ['GET'])
 def schedule_employee_to_project():
@@ -113,8 +122,8 @@ def time_lines():
     time_lines = projects_api.get_all_history_time_line()
     
     for project_time_line in time_lines:
-        start_date = datetime.strptime(project_time_line['start_date'], '%d/%m/%Y')
-        end_date =  datetime.strptime(project_time_line['end_date'], '%d/%m/%Y')
+        start_date = datetime.strptime(project_time_line['start_date'], '%Y-%m-%d')
+        end_date =  datetime.strptime(project_time_line['end_date'], '%Y-%m-%d')
         progress = int((datetime.now() - start_date).days)
         if progress < 0:
             progress = 0
@@ -128,9 +137,6 @@ def time_lines():
         else:
             project_time_line['progress'] = int(((progress / int(ends_in)) * 100)+1)
 
-        print(time_lines)
-
-       
     return render_template('time_lines.html', time_lines=time_lines)
 
 
