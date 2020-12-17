@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scheduling</title>
+    <link rel="stylesheet" type="text/css" href="/css/scheduling.css" />
+    <link rel="stylesheet" type="text/css" href="/css/table_style.css" />
+
+</head>
+
+<body>
+    {% include 'header.html' %}
+    <section id="main_section">
+        <table class="content-table">
+            <tr>
+                <th> id </th>
+                <th> name </th>
+                <th> phone_number </th>
+                <th> job </th>
+                <th> status </th>
+                <th> constructor_id </th>
+            </tr>
+            {%for employee in available_employees%}
+                <tr>
+                    {%for attribute in employee%}
+                        {% if attribute != 'project_id'%}
+                        <td>{{employee.get(attribute)}}</td>
+                        {% endif %}
+                    {%endfor%}
+                    <td> <a href="/schedule/remove?project_id={{project}}&employee_id={{employee.get('id')}}">Remove for proj</a> </td>
+                </tr>
+            {%endfor%}
+        </table>
+    </section>
+    {% include 'footer.html' %}
+</body>
+</html>
