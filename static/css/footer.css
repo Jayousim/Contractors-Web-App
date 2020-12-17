@@ -33,7 +33,7 @@
 }
 
 #footer #left h5, #footer #center h5, #footer #right h5{
-    animation: jump 180.0s ease 0s infinite normal;
+    animation: jump 1.5s ease 180s infinite normal;
 }
 
   
