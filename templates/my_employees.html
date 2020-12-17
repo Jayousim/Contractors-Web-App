@@ -42,7 +42,16 @@
                         <form action="/remove_employee/{{employee['id']}}" class="inline">
                             <button class="button button2" >Remove</button>
                         </form>
+                        </td>
+                        {% if employee['status'] == 'false'%}
+                        <td>
+                            <form action="/relese_employee/{{employee['id']}}" class="inline">
+                                <button class="button button2" >Relese from project</button>
+                            </form>
+                        </td>
+                        {% endif %}
                     </tr>
+                    
                 {%endfor%}
             </tbody>
         </table>

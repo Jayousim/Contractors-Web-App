@@ -73,6 +73,12 @@ def render_employees():
 def render_set_employees():
     return render_template('scheduling.html')
 
+
+@app.route('/relese_employee/<employee_id>', methods = ['GET'])
+def relese_employee(employee_id):
+    employee_api.free_employee_status(employee_id)
+    return redirect('/employees')
+
 @app.route('/remove_employee/<employee_id>', methods = ['GET'])
 def delete_employees(employee_id):
     employee_api.delete_employee(employee_id)
