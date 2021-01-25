@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, Response, redirect
-from db_api import employee_api, projects_api
+from model import employee_api, projects_api
 from datetime import date, datetime, timedelta
 import requests
 import json
@@ -12,7 +12,7 @@ RESPONSE_SERVER_ERROR = 500
 
 app = Flask(__name__, static_url_path='', 
               static_folder='static', 
-              template_folder='templates'
+              template_folder='view'
            )
 
 
