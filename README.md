@@ -8,4 +8,4 @@ to run the app locally, run server.py.
 on http://localhost:3000/projects you can add project, employees to projects.
 
 
-![projects](READMEpics/capture.png)
+![projects](READMEpics/Capture.PNG)
